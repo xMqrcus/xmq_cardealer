@@ -6,7 +6,8 @@ dependency "vrp"
 client_scripts {
 	"lib/Proxy.lua",
     "lib/Tunnel.lua",
-    'client.lua',
+    'client/client.lua',
+    'client/functions.lua',
     "config.lua"
 }
 
