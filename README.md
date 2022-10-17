@@ -14,3 +14,6 @@ Funktioner:
 Changelog fra sidste version:
 - Bug fixes
 - Optimering. Threads kører KUN når de behøves (0.5ms til 0.0ms idle)
+
+
+Kræver HT-Base samt mythic_notify
