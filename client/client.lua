@@ -36,7 +36,7 @@ CreateThread(function()
     while true do
         Wait(1000)
         local distance = distance(config.location[1],config.location[2],config.location[3])
-        if distance < 20 then
+        if distance < 10 then
             if not active then
                 active = true
                 thread()
@@ -184,13 +184,14 @@ function thread2()
             Wait(1)
             local ped = PlayerPedId()
             local coords = GetEntityCoords(ped)
-            if distance(-44.025882720947,-1098.4986572266,26.422328948975) < 5 and not menuOpened then
-                while IsControlPressed(0,174) and getDist < 5 do
+            dist = distance(-44.025882720947,-1098.4986572266,26.422328948975)
+            if dist < 5 and not menuOpened then
+                while IsControlPressed(0,174) and dist < 5 do
                     config.heading = config.heading+1
                     SetEntityHeading(veh,config.heading)
                     Wait(5)
                 end
-                while IsControlPressed(0,175) and getDist < 5 do
+                while IsControlPressed(0,175) and dist < 5 do
                     config.heading = config.heading-1
                     SetEntityHeading(veh,config.heading)
                     Wait(5)
