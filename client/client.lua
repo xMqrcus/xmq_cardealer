@@ -210,7 +210,7 @@ AddEventHandler("xmq:openSellMenu", function(sellTable)
         for k,v in pairs(sellTable) do
             for i=1, #t, 1 do
                 if v.vehicle == t[i].model then
-                    table.insert(sellMenuTable,{label = firstToUpper(v.vehicle).." | "..formatarNumero(math.floor(t[i].costs * 0.5)).."DKK", costs = math.floor(t[i].costs / 2), model = t[i].model, display = t[i].name,type = t[i].type})
+                    sellMenuTable[#sellMenuTable+1] = {label = firstToUpper(v.vehicle).." | "..formatarNumero(math.floor(t[i].costs * 0.5)).."DKK", costs = math.floor(t[i].costs / 2), model = t[i].model, display = t[i].name,type = t[i].type})
                 end
             end
         end
@@ -267,7 +267,7 @@ function openCategoryMenu()
         for _, t in ipairs{compact, coupe, sedan,sports,sportsclassics,supers,muscle,offroad,suv,varevogne,exclusive,mc} do
             for i=1, #t, 1 do
                 if t[i].type == menutype then
-                    table.insert(tab, {label = t[i].name.." | " .. formatarNumero(t[i].costs).."DKK | #"..i, model = t[i].model, costs = t[i].costs, display = t[i].name,type = t[i].type})
+                    tab[#tab+1] = {label = t[i].name.." | " .. formatarNumero(t[i].costs).."DKK | #"..i, model = t[i].model, costs = t[i].costs, display = t[i].name,type = t[i].type})
                 end
             end
         end
