@@ -1,3 +1,13 @@
+config = {
+    location = {-44.025882720947,-1098.4986572266,26.422328948975}, -- Hvor bilen du skal købe er
+    heading = 70.0, -- Hvilken vej køretøjet vender når det spawner. Default: 70.0 
+
+    selllocation = {-30.045528411865,-1105.1534423828,26.422359466553}, -- Hvor man skal kunne sælge sit køretøj
+    sellprice = 0.75, -- Dette er hvor mange penge du får, hvis du sælger et køretøj tilbage til forhandleren, i forhold til nypris. 0.75 betyder 75% af nypris, altså halv pris
+}
+
+
+
 compact = {
     {name = "Blista", costs = 50000, type = "compact", model = "blista"},
     {name = "Blista Compact", costs = 40000, type = "compact", model = "blista2"},
@@ -203,9 +213,4 @@ exclusive = {
     {name = "Growler", costs = 720000, type = "exclusive", model = "growler"},
     {name = "Dominator ASP", costs = 610000, type = "exclusive", model = "dominator7"},
     {name = "Sultan RS Classic", costs = 520000, type = "exclusive", model = "sultan3"},
-}
-
-config = {
-    location = {-44.025882720947,-1098.4986572266,26.422328948975},
-    heading = 70.0,
 }

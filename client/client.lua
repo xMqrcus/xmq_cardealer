@@ -9,8 +9,8 @@ local currSellModel = ""
 local currSellPrice = ""
 local currSellType = ""
 
-local askPlayer = false
-local askPlayerSell = false
+askPlayer = false
+askPlayerSell = false
 local menuOpened = false
 
 
@@ -36,7 +36,7 @@ CreateThread(function()
     while true do
         Wait(1000)
         local distance = distance(config.location[1],config.location[2],config.location[3])
-        if distance < 10 then
+        if distance < 20 then
             if not active then
                 active = true
                 thread()
@@ -131,7 +131,7 @@ function thread()
             end
             if askPlayer == true then
                 DisplayHelpText([[~r~[ENTER]~w~ Accepter handel
-    ~r~[BACKSPACE]~w~ Afbryd handlen]])
+~r~[BACKSPACE]~w~ Afbryd handlen]])
                 if IsControlJustPressed(0,191) and not menuOpened then
                     TriggerServerEvent("xmq:acceptDeal", currName, currPrice, currModel, currType)
                     HT.UI.Menu.Close('default', GetCurrentResourceName(), "specificCategory")
@@ -147,7 +147,7 @@ function thread()
 
             if askPlayerSell == true then
                 DisplayHelpText([[~r~[ENTER]~w~ Accepter handel
-    ~r~[BACKSPACE]~w~ Afbryd handlen]])
+~r~[BACKSPACE]~w~ Afbryd handlen]])
                 if IsControlJustPressed(0,191) and not menuOpened then
                     TriggerServerEvent("xmq:acceptSellDeal", currSellName, currSellPrice, currSellModel, currSellType)
                     HT.UI.Menu.Close('default', GetCurrentResourceName(), "specificCategory")
@@ -163,10 +163,10 @@ function thread()
                 end
             end
 
-            if distance(-30.045528411865,-1105.1534423828,26.422359466553) < 5 then
-                DrawMarker(27, -30.045528411865,-1105.1534423828,26.422359466553-0.95,0,0,0,0,0,0,1.3,1.3,0.5,255,255,255,255,false, false, false, true, false, false, false)
+            if distance(config.selllocation[1],config.selllocation[2],config.selllocation[3]) < 5 then
+                DrawMarker(27, config.selllocation[1],config.selllocation[2],config.selllocation[3]-0.95,0,0,0,0,0,0,1.3,1.3,0.5,255,255,255,255,false, false, false, true, false, false, false)
             end
-            if distance(-30.045528411865,-1105.1534423828,26.422359466553) < 1 and not IsPedInVehicle(ped,GetVehiclePedIsIn(ped,false)) and not askPlayerSell then
+            if distance(config.selllocation[1],config.selllocation[2],config.selllocation[3]) < 1 and not IsPedInVehicle(ped,GetVehiclePedIsIn(ped,false)) and not askPlayerSell and not askPlayer then
                 DisplayHelpText("~r~[G]~w~ Sælg køretøj")
                 if IsControlJustPressed(0,47) then
                     TriggerServerEvent("xmq:checkSellVeh")
@@ -210,7 +210,7 @@ AddEventHandler("xmq:openSellMenu", function(sellTable)
         for k,v in pairs(sellTable) do
             for i=1, #t, 1 do
                 if v.vehicle == t[i].model then
-                    table.insert(sellMenuTable,{label = firstToUpper(v.vehicle).." | "..formatarNumero(math.floor(t[i].costs / 2)).."DKK", costs = math.floor(t[i].costs / 2), model = t[i].model, display = t[i].name,type = t[i].type})
+                    table.insert(sellMenuTable,{label = firstToUpper(v.vehicle).." | "..formatarNumero(math.floor(t[i].costs * 0.5)).."DKK", costs = math.floor(t[i].costs / 2), model = t[i].model, display = t[i].name,type = t[i].type})
                 end
             end
         end

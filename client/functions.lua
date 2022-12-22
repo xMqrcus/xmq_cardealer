@@ -86,12 +86,12 @@ function checkSpeed(bool, hash, bool2, type)
 end
 
 RegisterNetEvent("askPlayer")
-AddEventHandler("askPlayer", function(name,price,model,currType)
-    askPlayer = true
+AddEventHandler("askPlayer", function(name,price,model)
+  askPlayer = true
 
-    buyName = name
-    buyPrice = price
-    buyModel = model
+  buyName = name
+  buyPrice = price
+  buyModel = model
 end)
 
 function distance(x,y,z)
